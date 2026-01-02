@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>LimpiaBnB | Gestión Logística</title>
     
-    <!-- Favicon dinámico para evitar error 404 -->
+    <!-- Favicon Data URI para evitar error 404 en producción y mejorar carga -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
     
-    <!-- Tailwind CSS con soporte para JIT y plugins necesarios -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <!-- Tailwind CSS: Se elimina 'line-clamp' de los plugins ya que está integrado por defecto en v3.3+ -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
     <script>
       tailwind.config = {
         darkMode: 'class',
@@ -42,8 +42,10 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.5;
             overflow-x: hidden;
+            /* Evitar el "flicker" de fuentes antes de cargar */
+            font-display: swap;
         }
-        /* Eliminar scrollbars feos */
+        /* Eliminar scrollbars para una estética más limpia */
         ::-webkit-scrollbar {
           width: 6px;
         }
